@@ -18,7 +18,7 @@
         "colorDiffuse":[0.64,0.64,0.64],
         "opacity":1,
         "DbgName":"Material",
-        "mapDiffuse":"wood.jpg",
+        "mapDiffuse":"madeiraporta.jpg",
         "transparent":false,
         "depthWrite":true
     }],

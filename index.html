@@ -6,10 +6,151 @@
 		<style>
 			body { margin: 0; overflow: hidden;}
 			canvas { width: 100%; height: 100% }
+			#controlesol{  display: none;  width: 70%; height: 75%; border-radius: 5px;}
+			#paineldecontrole{ display: none; position: absolute; top: 0%; left: 10%; width: 80%; height: 80%; background-color: white;}
+
+			button { width: 20%; height: 50px;}
+			/* PAINEL DE CONTROLE DO SOL */
+			/* incidencia*/
+			#valorincidencia { position: absolute; top: 5.8%; left: 10%;}
+			#descricaoincidencia{ position: absolute; top: 0%; left: 12%;}
+			/* turno */
+			#tituloturno{ position: absolute; top: 0%; left: 45%;}
+			#slideturno{ position: absolute; top: 7.8%; left: 45%;}
+			#valorturno { position: absolute; top: 6%; left: 55%;}
+			#descricaoturno{ position: absolute; top: 0%; left: 56%;}
+			/* eficiencia */
+			#valoreficiencia { position: absolute; top: 17%; left: 10%;}
+			#descricaoeficiencia { position: absolute; top: 12%; left: 12%;}
+			/*  horas  */
+			#titulohoras{ position: absolute; top: 10%; left: 45%;}
+			#horas{ position: absolute; top: 18%; left: 45%;}
+			#valorhoras { position: absolute; top: 16%; left: 55%;}
+			#descricaohoras{ position: absolute; top: 12%; left: 56%;}
+			/* potencia das placas */
+			#valorpotencia{ position: absolute; top: 29%; left: 10%;}
+			#descricaopotencia { position: absolute; top: 23%; left: 12%;}
+			/* quantidade de placas */
+			#tituloplacas{position: absolute; top: 30%; left: 45%;}
+			#mais{width: 12.8%; height: 5%; position: absolute; top: 30%; left: 55%; }
+			#numplacas{position: absolute; top: 35%; left: 55%;}
+			#menos{width: 12.8%; height: 5%; position: absolute; top: 38%; left: 55%;}
+			/*-----------------------------*/
+			/* PAINEL DE CONTROLE DAS LAMPADAS */
+			#descricaopainel {font-size: 20px; position: absolute; top: 0%; left: 60%; z-index: 1;}
+			#paineldecontrole img{z-index: -1;}
+			#paineldecontrole button{ width: 2%; height: 4%; z-index: 1;}
+			#sair button{width: 5%; height: 5%; z-index: 1;}
+			#luzsala{position: absolute; top: 50%; left: 30%;}
+			#luzquarto1{position: absolute; top: 13%; left: 33%;}
+			#luzquarto2{position: absolute; top: 13%; left: 11%;}
+			#luzquarto3{position: absolute; top: 43%; left: 13%;}
+			#luzcozinha{position: absolute; top: 73%; left: 13%;}
+			#luzarea{position: absolute; top: 55%; left: 13%;}
+			#luzbanheiro1{position: absolute; top: 28%; left: 13%;}
+			#luzbanheiro2{position: absolute; top: 9%; left: 23%;}
+			#energiagerada1{position: absolute; top: 6%; left: 50%; z-index: 1;}
+			#potencianecessaria1{position: absolute; top: 10%; left: 50%; z-index: 1;}
+			#energiagerada{position: absolute; top: 6%; left: 70%; z-index: 1;}
+			#potencianecessaria{position: absolute; top: 10%; left: 80%; z-index: 1;}
+			#preco{position: absolute; top: 16%; left: 50%; z-index: 1;}
+			#radios{position: absolute; top: 25%; left: 50%; z-index: 1;}
+			#conta1{position: absolute; top: 46%; left: 50%; z-index: 1;}
+			#conta2{position: absolute; top: 52%; left: 68%; z-index: 1;}
+			#consumido{position: absolute; top: 52%; left: 50%; z-index: 1;}
+			#produzido{position: absolute; top: 57%; left: 50%; z-index: 1;}
+			#credito{position: absolute; top: 57%; left: 68%; z-index: 1;}
+			#total{position: absolute; top: 62%; left: 50%; z-index: 1;}
+			#totalconta{position: absolute; top: 62%; left: 68%; z-index: 1;}
+			#ge{position: absolute; top: 57%; left: 78%; z-index: 1;}
+			#con{position: absolute; top: 52%; left: 78%; z-index: 1;}
+			#saldo{position: absolute; top: 62%; left: 78%; z-index: 1;}
+			#fecharpainel{ position: absolute; top: 90%; left: 70%; z-index: 1;}
+			/*-----------------------------*/
 		</style>
 	</head>
 	<body>
-		<script src="three.js"></script>
+		<script src="Three.js"></script>
 		<script src="j1.js"></script>
+		<script src="j2.js"></script>
+		<script src="j3.js"></script>
+		<script src="style.css"></script>
+
+
+
+		<div id="controlesol">
+			<div id="menu">
+				<p>Incidência</p>
+				<input id="incidencia" type="range" min="4" max="6" value="4" />
+				<p id="valorincidencia"></p>
+				<p id="descricaoincidencia">A incidencia solar é quanta luz solar uma área recebe<br> em um intervalo de tempo especificado, geralmente uma hora<br> ou um dia, e é dada em watt hora por metro quadrado.</p>
+
+				<p id="tituloturno">Turno do dia</p>
+				<input id="slideturno" type="range" min="0" max="10" value="5" />
+				<p id="valorturno"></p>
+				<p id="descricaoturno">Define se manhã, tarde ou noite, isso afeta fortemente a produção de energia.</p>
+
+				<p>Eficiência</p>
+				<input id="eficiencia" type="range" min="0" max="100" value="83" />
+				 <p id="valoreficiencia"></p>
+				 <p id="descricaoeficiencia">O quanto de luz solar que a placa transforma em energia.</p>
+
+				<p id="titulohoras">Horas</p>
+				<input id="horas" type="range" min="0" max="24" value="10" />
+				<p id="valorhoras"></p>
+				<p id="descricaohoras">Quantas horas os eletrodomésticos da casa ficam ligados.</p>
+
+				<p>Potência das placas</p>
+				<input id="potencia" type="range" min="0" max="300" value="150" />
+				<p id="valorpotencia"></p>
+				<p id="descricaopotencia">Quantos Watts cada placa produz.</p>
+
+				<p id="tituloplacas">Quantidade<br>de<br> placas</p>
+				<div>
+					<button id="mais" onclick="maisplaceholder()">+</button>
+					<input id="numplacas" value="10"></input>
+					<button id="menos" onclick="menosplaceholder()">-</button>
+				</div>
+
+				<button id="fecharconfigsol" onclick="fecharconfigsol()">Sair</button>
+			</div>
+		</div>
+
+		<div id="paineldecontrole">
+			<p id="descricaopainel">Painel de controle da casa</p>
+			<img width="50%" height="100%" src="models and textures/mapa.png" ></img>
+			<button id="luzsala" onclick="ligadesliga(1)"></button>
+			<button id="luzquarto1" onclick="ligadesliga(2)" ></button>
+			<button id="luzquarto2" onclick="ligadesliga(3)" ></button>
+			<button id="luzquarto3" onclick="ligadesliga(4)" ></button>
+			<button id="luzcozinha" onclick="ligadesliga(5)" ></button>
+			<button id="luzarea" onclick="ligadesliga(6)" ></button>
+			<button id="luzbanheiro1" onclick="ligadesliga(7)" ></button>
+			<button id="luzbanheiro2" onclick="ligadesliga(8)" ></button>
+			<div id="sair">
+			<button type="button" id="fecharpainel" onclick="fecharpainel()" >Sair</button>
+			<div>
+			<p id="energiagerada"></p>
+			<p id="potencianecessaria"></p>
+			<p id="energiagerada1">Energia gerada pela casa(Wh/dia):</p>
+			<p id="potencianecessaria1">Energia necessaria para suprir toda a casa(Wh/dia):</p>
+			<p id="preco">Preço do Kwh</p>
+			<p id="conta1">Valor da conta</p>
+			<p id="conta2"></p>
+			<p id="produzido">Valor do produzido(Crédito)</p>
+			<p id="consumido">Valor do consumido</p>
+			<p id="credito"></p>
+			<p id="total">Total</p>
+			<p id="totalconta"></p>
+			<p id="ge"></p>
+			<p id="con"></p>
+			<p id="saldo"></p>
+			<form id="radios">
+  			<input id="tf1" type="radio" name="gender" value="0,43" checked>Consumo até 60 kWh/mês (R$0,43)</input><br>
+  			<input id="tf2" type="radio" name="gender" value="0,53">Consumo de 61 a 300 kWh/mês (R$0,53)</input><br>
+  			<input id="tf3" type="radio" name="gender" value="0,61">Consumo acima de 300 kWh/mês (R$0,61)</input>
+			</form>
+		</div>
+
 	</body>
 </html>
